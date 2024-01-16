@@ -4,19 +4,22 @@ class TaskService {
 	static tasks = [];
 
 	addTask(title, description, dueDate) {
-		TaskService.tasks.push(new Task(title, description, dueDate));
+		TaskService.tasks.push<Task>(new Task(title, description, dueDate));
 	}
 	completeTask(id) {
-		TaskService.tasks.find((task) => task.id == id).complete = true;
+		TaskService.tasks.find((task) => {
+			if(task.id == id)
+				task.completed = true;
+		});
 	}
 	removeTask(id) {
 		TaskService.tasks.remove((task) => task.id == id);
 	}
 	getPendingTasks() {
-		TaskService.tasks.filter((task) => task.complete == false);
+		return TaskService.tasks.filter((task) => task.complete == false);
 	}
 	getCompletedTasks() {
-		TaskService.tasks.filter((task) => task.complete == true);
+		return TaskService.tasks.filter((task) => task.complete == true);
 	}
 }
 
