@@ -1,14 +1,12 @@
-const Task = require("./task");
-const TaskService = require("./taskService");
+import { Task } from "./task.js";
+import { TaskService } from "./taskService.js";
 
 const taskService = new TaskService();
 
-let task0 = new Task("Tirar la basura","Tirar la basura en el contenedor",Date.now());
-let task1 = new Task("Comprar un coche","Compra un toyota",Date.now());
-let task2 = new Task("Pasear al perro","Pasear al perro en parque de al lado",Date.now());
-let task3 = new Task("Pasear al gato","Pasear al gato y luego peinarlo",Date.now());
-
-console.log(task2);
+let task0 = new Task("Tirar la basura", "Tirar la basura en el contenedor", Date.now());
+let task1 = new Task("Comprar un coche", "Compra un toyota", Date.now());
+let task2 = new Task("Pasear al perro", "Pasear al perro en parque de al lado", Date.now());
+let task3 = new Task("Pasear al gato", "Pasear al gato y luego peinarlo", Date.now());
 
 taskService.addTask(task0);
 taskService.addTask(task1);

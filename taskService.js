@@ -1,26 +1,26 @@
-const Task = require("./task");
+import { Task } from "./task.js";
 
-class TaskService {
+export class TaskService {
 	static tasks = [];
 
-	addTask(title, description, dueDate) {
-		TaskService.tasks.push<Task>(new Task(title, description, dueDate));
+	addTask(Task) {
+		TaskService.tasks.push(Task);
 	}
 	completeTask(id) {
-		TaskService.tasks.find((task) => {
-			if(task.id == id)
-				task.completed = true;
+		TaskService.tasks.forEach((task) => {
+			console.log(task);
+			if(task.id === id){
+				task.toggleCompleted();
+			}
 		});
 	}
 	removeTask(id) {
 		TaskService.tasks.remove((task) => task.id == id);
 	}
 	getPendingTasks() {
-		return TaskService.tasks.filter((task) => task.complete == false);
+		return TaskService.tasks.filter((task) => task.completed == false);
 	}
 	getCompletedTasks() {
-		return TaskService.tasks.filter((task) => task.complete == true);
+		return TaskService.tasks.filter((task) => task.completed == true);
 	}
 }
-
-module.exports = TaskService;
